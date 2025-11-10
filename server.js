@@ -1,8 +1,11 @@
 const express = require('express');
 const logger = require('./logger');
+const connectDB = require('./database');
+
 
 const app = express();
 const PORT = 3000;
+connectDB();     
 
 app.use(logger); 
 
