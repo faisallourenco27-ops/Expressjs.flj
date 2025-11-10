@@ -1,8 +1,12 @@
 const express = require('express');
+const logger = require('./logger');
+
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => {
+app.use(logger); 
+
+app.get('/', (_req, res) => {
     res.json({ message: 'Server is running!' });
 });
 
