@@ -8,6 +8,15 @@ const PORT = 3000;
 connectDB();     
 
 app.use(logger); 
+app.use(express.json());
+app.use('/images', express.static('Lessonimages'));
+
+app.use('/api/lessons', require('./lesson'));
+app.use('/api/orders', require('./orders'));  
+
+app.get('/', (req, res) => {
+    res.json({ message: 'Lesson Booking API is running!' });
+});
 
 app.get('/', (_req, res) => {
     res.json({ message: 'Server is running!' });

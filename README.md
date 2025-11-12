@@ -17,14 +17,21 @@
   - `http://localhost:3000/images/nonexistent.jpg` (404 error)
 
 
+### MongoDB Collections 
 #### MongoDB Lesson Collection (Requirement A)
 - **Model**: `models/Lesson.js`
 - **Fields**: topic, price, location, space (all required)
 - **Database**: MongoDB Atlas cloud database
 - **Status**: Schema defined and ready for data
 
+
+#### Order Collection (Requirement B)
+- **Model**: `order.js`
+- **Fields**: name, phone number, lessonIDs (array), spaces, totalPrice
+- **Relationships**: References Lesson collection via lessonIDs
+- **Validation**: Name (letters only), phone (numbers only)
+
 ### Database Connection Test
 - A test script is included to verify MongoDB connectivity and Lesson collection functionality:
-
-# Test database connection and Lesson model
+# Test database connection 
 - node test-db.js
