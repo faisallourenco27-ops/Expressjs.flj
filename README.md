@@ -35,3 +35,22 @@
 - A test script is included to verify MongoDB connectivity and Lesson collection functionality:
 # Test database connection 
 - node test-db.js
+
+## REST API Endpoints 
+
+### GET /api/lessons
+- Returns all lessons as JSON array
+- Used by frontend to display available lessons
+
+### POST /api/orders  
+- Creates new orders in database
+- Validates: name (letters only), phone (numbers only), lesson existence
+- Calculates total price automatically
+
+### PUT /api/lessons/:id
+- Updates any lesson attribute (topic, location, price, space)
+- Used for inventory management after orders
+- Can set spaces to any number (not just increment/decrement)
+
+### Testing
+All endpoints tested with Postman collection
