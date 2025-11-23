@@ -1,35 +1,36 @@
 const express = require('express');
-const Lesson = require('./lesson');
+const { getDB } = require('./database');
 const router = express.Router();
 
-// Test route
-router.get('/test', (req, res) => {
-    res.json({ message: 'Lesson routes are working!' });
-});
-
-// GET /lessons - returns all lessons as JSON
+// GET /lessons
 router.get('/', async (req, res) => {
     try {
-        const lessons = await Lesson.find();
+        const db = getDB();
+        const lessons = await db.collection('lessons').find().toArray();
         res.json(lessons);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-// PUT /lessons/:id - update any lesson attribute
+// PUT /lessons/:id
 router.put('/:id', async (req, res) => {
     try {
-        const { topic, location, price, space } = req.body;
-        const updatedLesson = await Lesson.findByIdAndUpdate(
-            req.params.id,
-            { topic, location, price, space },
-            { new: true, runValidators: true }
+        const db = getDB();
+        const { ObjectId } = require('mongodb');
+        
+        const result = await db.collection('lessons').updateOne(
+            { _id: new ObjectId(req.params.id) },
+            { $set: req.body }
         );
         
-        if (!updatedLesson) {
+        if (result.matchedCount === 0) {
             return res.status(404).json({ error: 'Lesson not found' });
         }
+        
+        const updatedLesson = await db.collection('lessons').findOne(
+            { _id: new ObjectId(req.params.id) }
+        );
         
         res.json(updatedLesson);
     } catch (error) {

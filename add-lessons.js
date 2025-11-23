@@ -1,11 +1,9 @@
-const mongoose = require('mongoose');
+const { connectDB } = require('./database');
 require('dotenv').config();
-const Lesson = require('./lesson');
 
 const addAllLessons = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI);
-        console.log('✅ Adding all lessons to database...');
+        const db = await connectDB();
         
         const allLessons = [
             {
@@ -69,25 +67,26 @@ const addAllLessons = async () => {
                 space: 5
             }
         ];
+
+        await db.collection('lessons').deleteMany({});
+        await db.collection('lessons').insertMany(allLessons);
         
-        // Clear existing and add new lessons
-        await Lesson.deleteMany({});
-        await Lesson.insertMany(allLessons);
-        
-        console.log('✅ All 10 lessons added successfully!');
-        
+        console.log('✅ All lessons added with native driver!');
+
         // Display what was added
-        const lessons = await Lesson.find();
+        const lessons = await db.collection('lessons').find().toArray();
         console.log('\n📚 Lessons in database:');
         lessons.forEach(lesson => {
             console.log(`   - ${lesson.topic} | ${lesson.location} | £${lesson.price} | ${lesson.space} spaces`);
         });
+
+
         
     } catch (error) {
         console.error('❌ Error:', error.message);
-    } finally {
-        mongoose.connection.close();
     }
 };
 
 addAllLessons();
+        
+      

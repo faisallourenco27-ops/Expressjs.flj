@@ -54,3 +54,16 @@
 
 ### Testing
 All endpoints tested with Postman collection
+
+### 🗄️ Database Connection
+- **Technology**: Native MongoDB Node.js driver (no Mongoose)
+- **Connection**: Direct connection to MongoDB Atlas cluster
+- **Collections**: 
+  - `lessons` - Available lesson data
+  - `orders` - Customer order information
+
+### 🔧 Technical Implementation
+- Uses `MongoClient` for database connections
+- Native driver methods: `find()`, `insertOne()`, `updateOne()`, `deleteOne()`
+- Manual ObjectId handling for document references
+- No ODM library dependencies
