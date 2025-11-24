@@ -7,8 +7,19 @@ router.get('/', async (req, res) => {
     try {
         const db = getDB();
         const lessons = await db.collection('lessons').find().toArray();
-        res.json(lessons);
+        
+        // Transform the data to match frontend expectations
+        const transformedLessons = lessons.map(lesson => ({
+            _id: lesson._id,
+            topic: lesson.topic,
+            location: lesson.location,
+            price: lesson.price,
+            space: lesson.space
+        }));
+        
+        res.json(transformedLessons);
     } catch (error) {
+        console.error('Error fetching lessons:', error);
         res.status(500).json({ error: error.message });
     }
 });

@@ -6,6 +6,19 @@ const { connectDB } = require('./database');
 
 const app = express();
 const PORT = 3000;
+
+// CORS Middleware 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
+
 connectDB();     
 
 // Middleware 
@@ -22,15 +35,9 @@ app.get('/', (req, res) => {
     res.json({ message: 'Lesson Booking API is running!' });
 });
 
-app.get('/', (_req, res) => {
-    res.json({ message: 'Server is running!' });
-});
-
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
-
-app.use('/images', express.static('Lessonimages'));
 
 app.use('/images', (req, res, next) => {
     res.status(404).json({ error: 'Image not found' });
