@@ -1,0 +1,163 @@
+[33mcommit 13b2ce31137713aaf5d690e7ca1c575f073bec4f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: e870acc 4eb09aa
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 12:48:00 2025 +0000
+
+    Merge branch 'main' of https://github.com/faisallourenco27-ops/Expressjs.flj
+
+[33mcommit e870acc40b379bc5b6ef23b97e9055ce17402d07[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 12:46:32 2025 +0000
+
+    fix: update lesson data transformation to use '_id' instead of 'id'
+
+[33mcommit 4eb09aa7a6ad90d6aa27e2cf5273dc2cb5025667[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 12:30:53 2025 +0000
+
+    Refactor code structure for improved readability and maintainability
+
+[33mcommit 2fd00dfc3810b1ec4c18a453a3f620043d1718d0[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 12:26:57 2025 +0000
+
+    fix: update lesson data transformation to use '_id' instead of 'id'
+
+[33mcommit 4726ed11145756475671ff1d1f10e355e0cec3fe[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 11:41:28 2025 +0000
+
+    update lesson data transformation to use 'id' instead of '_id'
+
+[33mcommit 55d7b6ffae1b7e379a850ca18e4af85a5089a2ba[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 11:07:48 2025 +0000
+
+     remove emojis from console log messages in test files
+
+[33mcommit 144cccada196173068f2be884b348f1384ad802c[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 10:58:04 2025 +0000
+
+    edited console log messages in database and lesson files
+
+[33mcommit bf5a0f97d01dfcf593e47be82880538b5f19fd2e[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 10:55:19 2025 +0000
+
+    removed order.js file
+
+[33mcommit 4ae42dcc1badc625e7a55db97b0129d6b3f878df[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 10:52:18 2025 +0000
+
+    removed lesson file
+
+[33mcommit 1c18cc0b9552584973c847442055e83e753df6b3[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Tue Nov 25 10:41:14 2025 +0000
+
+    update post route in orders_routes
+
+[33mcommit 1f25f3b3b6df99fa521b6277786eb5d535da9088[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 24 17:04:32 2025 +0000
+
+    added cors to fix connection
+
+[33mcommit c484665d31d0e32cc1bb437ace8c590325ffbfd0[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Sun Nov 23 16:27:29 2025 +0000
+
+    refactor: replace Mongoose with native MongoDB driver
+    
+    - Remove Mongoose dependency and install native mongodb package
+    - Rewrite database connection using MongoClient
+    - Update all routes to use native driver methods
+    - Modify test files to work with native driver
+    - Maintain all functionality while meeting requirement
+
+[33mcommit 221e993e7014d63cbc74a053c2063b6b720dd9aa[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Sun Nov 23 15:35:36 2025 +0000
+
+    feat: complete REST API with GET /lessons, POST /orders, and PUT /lessons endpoints
+
+[33mcommit e7b29a07f3817883f99fab0d607ccded40dbab04[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Wed Nov 12 17:01:55 2025 +0000
+
+    "feat: implement MongoDB lesson and order collections as per requirements"
+
+[33mcommit b140b041174a2b2ca3dd114fa7650ed48bc424f1[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 10 18:34:29 2025 +0000
+
+    test: add database connection test script and update README
+
+[33mcommit eac21599f08ebc8d24912d92c088085ec89fb7b7[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 10 17:26:20 2025 +0000
+
+    feat: implemented lesson collection with topic, price, location, and space fields
+
+[33mcommit c25d66485f05ecc3bc1a333cf685bc3e83951b66[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 10 16:52:12 2025 +0000
+
+    build: add environment configuration for MongoDB Atlas
+
+[33mcommit dca684003bea7f88ace0cbff548a9ea3edd44900[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 10 14:08:25 2025 +0000
+
+    feat implement static file middleware for lesson images with error handling
+
+[33mcommit 89c1d8f9cfa3992af004d858ebedfe868d12d1b5[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 10 14:03:14 2025 +0000
+
+    git commit -m "feat: implement static file middleware for lesson images with error handling"
+
+[33mcommit aceb1feb911868b35118e0ff41ee4af6240a9381[m
+Merge: 68d5dea e7914ee
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 10 13:04:51 2025 +0000
+
+    Merge branch 'main' of https://github.com/faisallourenco27-ops/Expressjs.flj
+
+[33mcommit 68d5dea34a8791d8bd90f82da9ac5d3025817fbb[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 10 13:04:36 2025 +0000
+
+    feat: implemented and integrated logger middleware
+
+[33mcommit 6350fab635ef389a2394a58665f78e2b39f9bfd9[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Mon Nov 10 12:53:41 2025 +0000
+
+    feat: implement and integrate logger middleware as per requirement A
+
+[33mcommit e7914ee6e2d17704a3f5051d4437173aca73b50d[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Wed Nov 5 19:39:54 2025 +0000
+
+    Update description of the backend server
+
+[33mcommit a7317d746af8a9c0d57c604ed5b40f176189860c[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Wed Nov 5 19:25:25 2025 +0000
+
+    chore: initialise Express.js project with basic dependencies
+
+[33mcommit 8e6f3410a7a0ac09722e33a4a9774a2a240eb109[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Wed Nov 5 19:18:15 2025 +0000
+
+    faisallourenco27@gmail.com
+
+[33mcommit 9efce619888b0fbebff9d3c0f78bd52c6b248b48[m
+Author: FaisalLou <faisallourenco27@gmail.com>
+Date:   Wed Nov 5 19:17:51 2025 +0000
+
+    FaisalLou
