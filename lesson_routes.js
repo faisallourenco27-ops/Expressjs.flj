@@ -10,12 +10,17 @@ router.get('/', async (req, res) => {
         
         // Transform the data to match frontend expectations
         const transformedLessons = lessons.map(lesson => ({
-            id: lesson._id.toString(), 
+            id: lesson.id,
             topic: lesson.topic,
             location: lesson.location,
             price: lesson.price,
             space: lesson.space
         }));
+
+        console.log('=== TRANSFORMED ===');
+        transformedLessons.forEach(lesson => {
+            console.log(`Topic: ${lesson.topic}, id: ${lesson.id}, id length: ${lesson.id.length}`);
+        });
         
         res.json(transformedLessons);
     } catch (error) {
