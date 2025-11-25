@@ -17,7 +17,7 @@ const testOrders = async () => {
         }
         
         // Test 1: Create order with single lesson
-        console.log('\n📝 Testing Single Lesson Order...');
+        console.log('\n Testing Single Lesson Order...');
         const singleOrder = {
             name: 'Jimmy Smith',
             phoneNumber: '1234554321',
@@ -45,12 +45,12 @@ const testOrders = async () => {
         console.log(' Multiple Lessons Order Created:', multiOrder.name);
         
         // Test 3: Get all orders
-        console.log('\n🔍 Testing Order Retrieval...');
+        console.log('\n Testing Order Retrieval...');
         const allOrders = await db.collection('orders').find().toArray();
         console.log('Total orders:', allOrders.length);
         
         // Clean up
-        console.log('\n🧹 Cleaning up test orders...');
+        console.log('\n Cleaning up test orders...');
         await db.collection('orders').deleteMany({ 
             _id: { $in: [singleResult.insertedId, multiResult.insertedId] } 
         });

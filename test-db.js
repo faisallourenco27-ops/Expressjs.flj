@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const testDatabase = async () => {
     try {
-        console.log('🧪 Testing MongoDB Connection (Native Driver)...');
+        console.log(' Testing MongoDB Connection (Native Driver)...');
         
         const db = await connectDB();
         console.log(' MongoDB Connected Successfully with Native Driver!');
