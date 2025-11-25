@@ -71,11 +71,11 @@ const addAllLessons = async () => {
         await db.collection('lessons').deleteMany({});
         await db.collection('lessons').insertMany(allLessons);
         
-        console.log('✅ All lessons added with native driver!');
+        console.log(' All lessons added with native driver!');
 
         // Display what was added
         const lessons = await db.collection('lessons').find().toArray();
-        console.log('\n📚 Lessons in database:');
+        console.log('\n Lessons in database:');
         lessons.forEach(lesson => {
             console.log(`   - ${lesson.topic} | ${lesson.location} | £${lesson.price} | ${lesson.space} spaces`);
         });
@@ -83,7 +83,7 @@ const addAllLessons = async () => {
 
         
     } catch (error) {
-        console.error('❌ Error:', error.message);
+        console.error(' Error:', error.message);
     }
 };
 

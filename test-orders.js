@@ -3,16 +3,16 @@ require('dotenv').config();
 
 const testOrders = async () => {
     try {
-        console.log('🧪 Testing Orders Collection (Native Driver)...');
+        console.log(' Testing Orders Collection (Native Driver)...');
         
         const db = await connectDB();
         const { ObjectId } = require('mongodb');
-        console.log('✅ MongoDB Connected');
+        console.log('MongoDB Connected');
         
         // Get some lesson IDs first
         const lessons = await db.collection('lessons').find().limit(2).toArray();
         if (lessons.length < 2) {
-            console.log('❌ Need at least 2 lessons in database');
+            console.log('Need at least 2 lessons in database');
             return;
         }
         
@@ -28,10 +28,10 @@ const testOrders = async () => {
         };
         
         const singleResult = await db.collection('orders').insertOne(singleOrder);
-        console.log('✅ Single Lesson Order Created:', singleOrder.name);
+        console.log('Single Lesson Order Created:', singleOrder.name);
         
         // Test 2: Create order with multiple lessons
-        console.log('\n📝 Testing Multiple Lessons Order...');
+        console.log('\n Testing Multiple Lessons Order...');
         const multiOrder = {
             name: 'Sarah Johnson', 
             phoneNumber: '0987654321',
@@ -42,22 +42,22 @@ const testOrders = async () => {
         };
         
         const multiResult = await db.collection('orders').insertOne(multiOrder);
-        console.log('✅ Multiple Lessons Order Created:', multiOrder.name);
+        console.log(' Multiple Lessons Order Created:', multiOrder.name);
         
         // Test 3: Get all orders
         console.log('\n🔍 Testing Order Retrieval...');
         const allOrders = await db.collection('orders').find().toArray();
-        console.log('✅ Total orders:', allOrders.length);
+        console.log('Total orders:', allOrders.length);
         
         // Clean up
         console.log('\n🧹 Cleaning up test orders...');
         await db.collection('orders').deleteMany({ 
             _id: { $in: [singleResult.insertedId, multiResult.insertedId] } 
         });
-        console.log('✅ Order tests completed!');
+        console.log(' Order tests completed!');
         
     } catch (error) {
-        console.error('❌ Order test failed:', error.message);
+        console.error(' Order test failed:', error.message);
     }
 };
 

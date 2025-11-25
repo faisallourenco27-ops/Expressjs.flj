@@ -6,10 +6,10 @@ const testDatabase = async () => {
         console.log('🧪 Testing MongoDB Connection (Native Driver)...');
         
         const db = await connectDB();
-        console.log('✅ MongoDB Connected Successfully with Native Driver!');
+        console.log(' MongoDB Connected Successfully with Native Driver!');
         
         // Test 1: Create a sample lesson
-        console.log('\n📝 Testing Lesson Creation...');
+        console.log('\nTesting Lesson Creation...');
         const sampleLesson = {
             topic: 'Test Mathematics',
             price: 50,
@@ -18,12 +18,12 @@ const testDatabase = async () => {
         };
         
         const result = await db.collection('lessons').insertOne(sampleLesson);
-        console.log('✅ Lesson Created with ID:', result.insertedId);
+        console.log(' Lesson Created with ID:', result.insertedId);
         
         // Test 2: Find all lessons
-        console.log('\n🔍 Testing Lesson Retrieval...');
+        console.log('\n Testing Lesson Retrieval...');
         const lessons = await db.collection('lessons').find().toArray();
-        console.log('✅ Lessons in database:', lessons.length);
+        console.log('Lessons in database:', lessons.length);
         lessons.forEach(lesson => {
             console.log(`   - ${lesson.topic} (${lesson.location}) - £${lesson.price}`);
         });
@@ -31,10 +31,10 @@ const testDatabase = async () => {
         // Test 3: Clean up
         console.log('\n🧹 Cleaning up test data...');
         await db.collection('lessons').deleteOne({ _id: result.insertedId });
-        console.log('✅ Test completed successfully!');
+        console.log(' Test completed successfully!');
         
     } catch (error) {
-        console.error('❌ Database test failed:', error.message);
+        console.error(' Database test failed:', error.message);
     }
 };
 

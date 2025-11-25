@@ -8,7 +8,7 @@ const connectDB = async () => {
         const client = new MongoClient(process.env.MONGODB_URI);
         await client.connect();
         db = client.db('lessonbooking');
-        console.log('✅ MongoDB Connected with Native Driver');
+        console.log('MongoDB Connected with Native Driver');
         return db;
     } catch (error) {
         console.error('Database connection error:', error);
