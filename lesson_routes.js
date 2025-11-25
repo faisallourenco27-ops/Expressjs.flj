@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
         
         // Transform the data to match frontend expectations
         const transformedLessons = lessons.map(lesson => ({
-            _id: lesson._id,
+            id: lesson.id,
             topic: lesson.topic,
             location: lesson.location,
             price: lesson.price,
