@@ -1,69 +1,81 @@
-# Coursesforyou App - Backend
--Express.js server for lesson order.
+# Courses For You – Backend (Node.js / Express / MongoDB)
 
-#### Logger Middleware (Requirement A)
-- **File**: `logger.js`
-- **Function**: Logs all incoming requests to the server console
-- **Output**: Timestamp, HTTP method, URL for each request
-- **Usage**: Automatically applied to all routes
+This repository contains the **backend API** for the “Courses For You” full-stack coursework project.  
+It exposes a simple REST API for **lessons** and **orders**, backed by **MongoDB**, and is consumed by a Vue.js frontend hosted on GitHub Pages.
 
-### Static File Middleware (Requirement B)
-- **Folder**: `Lessonimages/` - contains lesson images
-- **Route**: `/images/:filename` - serves static image files
-- **Error Handling**: Returns 404 JSON error for missing images
-- **Test Images**: Maths.jpg, Art.jpg, Boxing.jpg, etc.
-- **Test**: 
-  - `http://localhost:3000/images/Boxing.jpg` (existing image)
-  - `http://localhost:3000/images/nonexistent.jpg` (404 error)
+The backend is deployed on **Render**. 
+
+---
 
 
-### MongoDB Collections 
-#### MongoDB Lesson Collection (Requirement A)
-- **Model**: `models/Lesson.js`
-- **Fields**: topic, price, location, space (all required)
-- **Database**: MongoDB Atlas cloud database
-- **Status**: Schema defined and ready for data
+- **Node.js** + **Express.js**
+- **MongoDB** (cloud cluster)
+- **native driver** for database access
+- Hosted on **Render**
+- Tested with **Postman**
 
+---
 
-#### Order Collection (Requirement B)
-- **Model**: `order.js`
-- **Fields**: name, phone number, lessonIDs (array), spaces, totalPrice
-- **Relationships**: References Lesson collection via lessonIDs
-- **Validation**: Name (letters only), phone (numbers only)
+## Features
 
-### Database Connection Test
-- A test script is included to verify MongoDB connectivity and Lesson collection functionality:
-# Test database connection 
-- node test-db.js
+### Lessons API
 
-## REST API Endpoints 
+- Returns a list of lessons from MongoDB.
+- Each lesson includes:
+  - `topic` (subject title)
+  - `location`
+  - `price`
+  - `space` (available spaces)
+  - optional `image` / icon path
+- Supports **updating available spaces** via `PUT /lessons/:id`.
+- Designed to be consumed by the Vue.js frontend (lesson listing, cart, admin page).
 
-### GET /api/lessons
-- Returns all lessons as JSON array
-- Used by frontend to display available lessons
+### Orders API
 
-### POST /api/orders  
-- Creates new orders in database
-- Validates: name (letters only), phone (numbers only), lesson existence
-- Calculates total price automatically
+- Accepts new orders from the frontend via `POST /orders`.
+- Saves orders into MongoDB with:
+  - customer `name`
+  - `phoneNumber`
+  - an array of `lessonIDs`
+  - total number of spaces ordered
+  - timestamp / metadata
+- Used by the checkout page of the frontend.
 
-### PUT /api/lessons/:id
-- Updates any lesson attribute (topic, location, price, space)
-- Used for inventory management after orders
-- Can set spaces to any number (not just increment/decrement)
+### MongoDB Integration
 
-### Testing
-All endpoints tested with Postman collection
+- **Two collections**:
+  - `lessons` – initial seed of at least 10 lessons.
+  - `orders` – one document per order.
+- Includes a separate **seeding script** (`add-lessons.js`) to populate the `lessons` collection.
 
-### 🗄️ Database Connection
-- **Technology**: Native MongoDB Node.js driver (no Mongoose)
-- **Connection**: Direct connection to MongoDB Atlas cluster
-- **Collections**: 
-  - `lessons` - Available lesson data
-  - `orders` - Customer order information
+### Middleware
 
-### 🔧 Technical Implementation
-- Uses `MongoClient` for database connections
-- Native driver methods: `find()`, `insertOne()`, `updateOne()`, `deleteOne()`
-- Manual ObjectId handling for document references
-- No ODM library dependencies
+- **Logger middleware** (`logger.js`)
+  - Logs every incoming request (method, URL, timestamp) to the console.
+  - Helps with debugging and demonstrates custom middleware usage.
+
+- **Static file middleware**
+  - Serves lesson images or returns an error message if the image does not exist.
+  - Demonstrates serving static assets in Express.
+
+- Basic error-handling and JSON parsing (`express.json()`).
+
+### REST API Design
+
+All API routes are mounted under `/api` (e.g. `/api/lessons`), which makes it easy for the frontend to call them via `fetch()`.
+
+---
+
+## Project Structure
+
+```txt
+.
+├── add-lessons.js       # Script to seed MongoDB with initial lesson data
+├── lesson_routes.js     # Express routes for /lessons (GET, PUT)
+├── orders_routes.js     # Express routes for /orders (POST)
+├── logger.js            # Custom logger middleware
+├── server.js            # Express app entry point
+├── test-db.js           # Utility script to test DB connectivity
+├── test-orders.js       # Utility script to test order insertion
+├── package.json
+└── README.md
